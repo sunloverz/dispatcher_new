@@ -1,0 +1,21 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  username: username
+  password: 'password'
+
+development:
+  <<: *default
+  database: dispatcher_development
+  host: localhost
+
+test:
+  <<: *default
+  database: dispatcher_test
+
+production:
+  <<: *default
+  database: dispatcher_production
+  username: dispatcher
+  password: <%= ENV['DISPATCHER_DATABASE_PASSWORD'] %>
